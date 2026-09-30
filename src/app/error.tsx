@@ -1,0 +1,32 @@
+"use client";
+
+import { useEffect } from "react";
+import { ErrorState } from "@/components/states/error-state";
+
+/**
+ * Route-level fallback for errors that escape every per-section
+ * `DashboardErrorBoundary` (e.g. a bug in the page shell itself, rather than
+ * in a section's data fetch). Next.js requires this file to be a Client
+ * Component.
+ */
+export default function DashboardError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center p-6">
+      <ErrorState
+        title="Não foi possível carregar esta página"
+        description="Um erro inesperado interrompeu o carregamento. Tente novamente."
+        onRetry={reset}
+      />
+    </div>
+  );
+}
