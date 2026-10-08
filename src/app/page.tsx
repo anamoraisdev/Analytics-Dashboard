@@ -37,10 +37,12 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
 
   return (
     <div className="flex flex-col gap-6 p-4 sm:p-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 animate-in fade-in-0 slide-in-from-top-2 duration-500 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="flex items-center gap-2.5">
-            <h1 className="text-xl font-semibold tracking-tight">Visão geral</h1>
+            <h1 className="bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-xl font-semibold tracking-tight text-transparent">
+              Visão geral
+            </h1>
             <LiveIndicator />
           </div>
           <p className="text-sm text-muted-foreground">Acompanhe as métricas-chave da sua empresa.</p>

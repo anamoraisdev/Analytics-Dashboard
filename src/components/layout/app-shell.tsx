@@ -14,7 +14,17 @@ export function AppShell({ children }: { children: ReactNode }) {
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
         <Header />
-        <main className="flex-1 overflow-y-auto">{children}</main>
+        <main className="relative flex-1 overflow-y-auto">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none fixed inset-0 -z-10 opacity-60 dark:opacity-40"
+            style={{
+              background:
+                "radial-gradient(600px circle at 15% 0%, color-mix(in oklch, var(--color-brand), transparent 88%), transparent 60%), radial-gradient(500px circle at 100% 20%, color-mix(in oklch, var(--color-accent-fun), transparent 90%), transparent 60%)",
+            }}
+          />
+          {children}
+        </main>
       </div>
     </div>
   );

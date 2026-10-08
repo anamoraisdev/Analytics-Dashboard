@@ -6,7 +6,7 @@ import { formatCurrency } from "@/lib/utils/format-currency";
 import { formatShortDate } from "@/lib/utils/format-date";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { EmptyState } from "@/components/states/empty-state";
 import { TransactionStatusBadge } from "./status-badge";
 
@@ -39,16 +39,18 @@ export async function RecentTransactionsCard({ period, custom, forceError }: Rec
   const recent = transactions.slice(0, PREVIEW_COUNT);
 
   return (
-    <Card>
+    <Card className="animate-in fade-in-0 slide-in-from-bottom-2 fill-mode-both duration-500 delay-200">
       <CardHeader className="flex-row items-center justify-between">
         <div>
           <CardTitle>Transações recentes</CardTitle>
           <CardDescription>Últimas {PREVIEW_COUNT} no período selecionado</CardDescription>
         </div>
-        <Button variant="ghost" size="sm" nativeButton={false} render={<Link href="/transactions" />}>
-          Ver todas
-          <ArrowRight className="size-3.5" />
-        </Button>
+        <CardAction>
+          <Button variant="ghost" size="sm" nativeButton={false} render={<Link href="/transactions" />}>
+            Ver todas
+            <ArrowRight className="size-3.5" />
+          </Button>
+        </CardAction>
       </CardHeader>
       <CardContent>
         {recent.length === 0 ? (
@@ -62,7 +64,7 @@ export async function RecentTransactionsCard({ period, custom, forceError }: Rec
             {recent.map((transaction) => (
               <div
                 key={transaction.id}
-                className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-muted/40"
+                className="flex items-center gap-3 rounded-lg px-2 py-2 transition-all hover:translate-x-0.5 hover:bg-muted/40"
               >
                 <Avatar size="sm">
                   <AvatarFallback>{initials(transaction.customer.name)}</AvatarFallback>

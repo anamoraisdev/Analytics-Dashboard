@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardAction, CardContent, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function MetricCardSkeleton() {
@@ -6,7 +6,9 @@ export function MetricCardSkeleton() {
     <Card>
       <CardHeader className="flex-row items-center justify-between">
         <Skeleton className="h-4 w-24" />
-        <Skeleton className="size-8 rounded-full" />
+        <CardAction>
+          <Skeleton className="size-8 rounded-full" />
+        </CardAction>
       </CardHeader>
       <CardContent className="space-y-2">
         <Skeleton className="h-7 w-28" />

@@ -16,13 +16,13 @@ interface SidebarNavItemProps {
 
 const itemClassName = (isActive: boolean, collapsed: boolean | undefined, disabled: boolean) =>
   cn(
-    "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+    "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
     disabled
       ? "text-muted-foreground/60"
       : [
           "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
           isActive
-            ? "bg-sidebar-accent text-sidebar-accent-foreground"
+            ? "bg-sidebar-accent text-sidebar-accent-foreground before:absolute before:left-0 before:top-1/2 before:h-5 before:-translate-y-1/2 before:rounded-full before:bg-brand before:w-1"
             : "text-sidebar-foreground/70",
         ],
     collapsed && "justify-center px-0"
